@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pioneira — A 1ª lavanderia de autosserviço de Sousa-PB. Tudo pronto em 75 minutos por apenas R$ 15,90 por ciclo. OMO, Comfort e Alvejante inclusos." />
+  <meta name="theme-color" content="#1A5F6E" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pioneira — A 1ª lavanderia de autosserviço de Sousa-PB" />
+  <meta property="og:description" content="Tudo pronto em 75 minutos. R$ 15,90 por ciclo. OMO, Comfort e Alvejante inclusos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <title>Pioneira — Lavanderia de Autosserviço em Sousa-PB</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================
+       DESIGN TOKENS
+       ============================ */
+    :root {
+      --teal-deep:   #1A5F6E;
+      --teal-mid:    #2D8B96;
+      --teal-bright: #4FB8B5;
+      --teal-light:  #7DD3D0;
+      --teal-soft:   #C5EAE8;
+
+      --cream:       #FAFBFB;
+      --paper:       #F2F7F7;
+      --ink:         #0F2A30;
+      --ink-soft:    #2B4248;
+      --gray:        #5A6B70;
+      --line:        rgba(15, 42, 48, 0.08);
+
+      --brand-gradient: linear-gradient(95deg, #1A5F6E 0%, #2D8B96 35%, #4FB8B5 70%, #7DD3D0 100%);
+
+      --font-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+
+      --shadow-sm: 0 1px 2px rgba(15, 42, 48, 0.04), 0 2px 6px rgba(15, 42, 48, 0.04);
+      --shadow-md: 0 4px 12px rgba(15, 42, 48, 0.06), 0 8px 24px rgba(15, 42, 48, 0.05);
+      --shadow-lg: 0 8px 24px rgba(15, 42, 48, 0.08), 0 24px 60px rgba(15, 42, 48, 0.08);
+      --shadow-brand: 0 8px 28px rgba(45, 139, 150, 0.28);
+
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-xl: 36px;
+
+      --container: 1200px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: 0; background: none; }
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 0;
+    }
+    p { margin: 0; }
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+    /* NAVBAR */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(180%) blur(14px);
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      background: rgba(250, 251, 251, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 26px;
+      letter-spacing: -0.03em;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .logo small {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      background: none;
+      -webkit-text-fill-color: var(--gray);
+    }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink-soft); transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--teal-mid); }
+    .nav-cta {
+      padding: 11px 20px; border-radius: 999px;
+      background: var(--ink); color: white;
+      font-size: 14px; font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    @media (max-width: 820px) {
+      .nav-links { display: none; }
+      .nav-cta { padding: 9px 16px; font-size: 13px; }
+    }
+
+    /* HERO */
+    .hero { position: relative; padding: 80px 0 120px; overflow: hidden; isolation: isolate; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -2;
+      background:
+        radial-gradient(80% 60% at 90% 10%, rgba(125, 211, 208, 0.32), transparent 60%),
+        radial-gradient(60% 50% at 0% 100%, rgba(79, 184, 181, 0.22), transparent 60%),
+        linear-gradient(180deg, var(--cream) 0%, var(--paper) 100%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: center; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 7px 16px 7px 8px;
+      background: white; border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 13px; font-weight: 600; color: var(--ink-soft);
+      box-shadow: var(--shadow-sm); margin-bottom: 28px;
+    }
+    .hero-eyebrow .badge {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--brand-gradient); color: white;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800; font-family: var(--font-display);
+    }
+    .hero h1 { font-size: clamp(40px, 6vw, 76px); font-weight: 800; letter-spacing: -0.035em; }
+    .hero h1 .accent {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      font-style: italic; font-weight: 700;
+    }
+    .hero-sub { margin-top: 24px; font-size: 19px; color: var(--ink-soft); max-width: 540px; line-height: 1.55; }
+    .hero-ctas { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 26px; border-radius: 999px;
+      font-weight: 600; font-size: 15px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--ink); color: white; box-shadow: var(--shadow-md); }
+    .btn-primary:hover { transform: translateY(-2px); background: var(--teal-deep); box-shadow: var(--shadow-brand); }
+    .btn-secondary { background: white; color: var(--ink); border: 1px solid var(--line); }
+    .btn-secondary:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-whats { background: #25D366; color: white; }
+    .btn-whats:hover { transform: translateY(-2px); background: #1FB855; box-shadow: 0 8px 28px rgba(37, 211, 102, 0.35); }
+    .hero-trust { margin-top: 36px; display: flex; gap: 28px; flex-wrap: wrap; align-items: center; font-size: 14px; color: var(--gray); }
+    .trust-item { display: inline-flex; align-items: center; gap: 8px; }
+    .trust-item svg { color: var(--teal-mid); }
+    .trust-item b { color: var(--ink); font-weight: 600; }
+
+    /* HERO VISUAL */
+    .hero-visual { position: relative; aspect-ratio: 1; max-width: 520px; justify-self: end; }
+    .machine {
+      position: absolute; inset: 12%;
+      background: white;
+      border-radius: 36px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-lg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 24px; padding: 40px; overflow: hidden;
+    }
+    .machine::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 50px;
+      background: linear-gradient(180deg, rgba(125, 211, 208, 0.12), transparent);
+    }
+    .machine-top { display: flex; gap: 10px; align-self: flex-start; }
+    .machine-led {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--teal-bright);
+      box-shadow: 0 0 8px var(--teal-bright);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .machine-led:nth-child(2) { background: var(--teal-light); animation-delay: 0.5s; box-shadow: 0 0 8px var(--teal-light); }
+    .machine-led:nth-child(3) { background: var(--teal-mid); animation-delay: 1s; box-shadow: 0 0 8px var(--teal-mid); }
+    @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+    .drum {
+      width: 78%; aspect-ratio: 1; border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, var(--teal-soft) 0%, var(--teal-light) 60%, var(--teal-bright) 100%);
+      position: relative;
+      box-shadow:
+        inset 0 0 0 8px white,
+        inset 0 0 0 14px var(--paper),
+        inset 0 0 60px rgba(45, 139, 150, 0.4);
+      overflow: hidden;
+      animation: spin 8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .drum::before, .drum::after {
+      content: ""; position: absolute; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.55);
+    }
+    .drum::before { width: 22%; height: 22%; top: 18%; left: 22%; }
+    .drum::after { width: 14%; height: 14%; bottom: 22%; right: 24%; box-shadow: -40px -10px 0 8px rgba(255, 255, 255, 0.45); }
+    .machine-label {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--teal-deep); align-self: flex-start;
+    }
+    .machine-label span { color: var(--teal-bright); }
+    .bubble {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(125, 211, 208, 0.3));
+      box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.5);
+      animation: float 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(8px); }
+    }
+    .bubble.b1 { width: 80px; height: 80px; top: 8%; right: -5%; animation-delay: 0s; }
+    .bubble.b2 { width: 44px; height: 44px; bottom: 14%; left: -3%; animation-delay: 1.5s; }
+    .bubble.b3 { width: 28px; height: 28px; top: 30%; left: 6%; animation-delay: 3s; }
+    .bubble.b4 { width: 56px; height: 56px; bottom: 4%; right: 14%; animation-delay: 2s; }
+    @media (max-width: 900px) {
+      .hero { padding: 56px 0 80px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { max-width: 380px; justify-self: center; }
+    }
+
+    /* FEATURES STRIP */
+    .features-strip { background: var(--ink); color: white; padding: 28px 0; position: relative; overflow: hidden; }
+    .features-strip::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(60% 100% at 50% 0%, rgba(79, 184, 181, 0.18), transparent 60%);
+    }
+    .strip-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
+    .strip-item { display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 500; }
+    .strip-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: rgba(79, 184, 181, 0.18); color: var(--teal-light);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    @media (max-width: 820px) { .strip-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* SECTION COMMONS */
+    section { padding: 110px 0; position: relative; }
+    .section-head { text-align: center; max-width: 720px; margin: 0 auto 64px; }
+    .eyebrow {
+      display: inline-block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--teal-mid); margin-bottom: 16px;
+    }
+    .section-head h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 700; letter-spacing: -0.03em; }
+    .section-head p { margin-top: 18px; font-size: 18px; color: var(--gray); }
+
+    /* HOW IT WORKS */
+    .how { background: white; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; position: relative; }
+    .steps::before {
+      content: ""; position: absolute; top: 36px; left: 16%; right: 16%; height: 2px;
+      background: repeating-linear-gradient(90deg, var(--teal-light) 0 8px, transparent 8px 16px);
+      z-index: 0;
+    }
+    .step { position: relative; text-align: center; padding: 16px; }
+    .step-num {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: white; border: 2px solid var(--teal-light); color: var(--teal-deep);
+      font-family: var(--font-display); font-size: 28px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px; position: relative; z-index: 1;
+      box-shadow: 0 0 0 8px white;
+      transition: transform 0.3s ease;
+    }
+    .step:hover .step-num {
+      background: var(--brand-gradient); color: white; border-color: transparent; transform: scale(1.06);
+    }
+    .step h3 { font-size: 22px; margin-bottom: 12px; }
+    .step p { color: var(--gray); font-size: 15.5px; max-width: 280px; margin: 0 auto; }
+    @media (max-width: 820px) {
+      .steps { grid-template-columns: 1fr; gap: 40px; }
+      .steps::before { display: none; }
+    }
+
+    /* PRICING */
+    .services {
+      background:
+        radial-gradient(60% 50% at 100% 0%, rgba(125, 211, 208, 0.18), transparent 60%),
+        radial-gradient(50% 40% at 0% 100%, rgba(45, 139, 150, 0.10), transparent 60%),
+        var(--cream);
+    }
+    .price-hero {
+      max-width: 880px; margin: 0 auto;
+      background: var(--ink); color: white;
+      border-radius: var(--radius-xl);
+      padding: 56px 48px;
+      box-shadow: var(--shadow-lg);
+      position: relative; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .price-hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(60% 80% at 100% 0%, rgba(79, 184, 181, 0.28), transparent 55%),
+        radial-gradient(50% 60% at 0% 100%, rgba(125, 211, 208, 0.18), transparent 60%);
+    }
+    .price-hero > * { position: relative; }
+    .price-tag-top {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--teal-light); margin-bottom: 18px;
+    }
+    .price-big { font-family: var(--font-display); display: flex; align-items: baseline; gap: 8px; }
+    .price-big .currency { font-size: 28px; font-weight: 600; color: rgba(255,255,255,0.7); }
+    .price-big .amount {
+      font-size: clamp(72px, 9vw, 120px); font-weight: 800;
+      letter-spacing: -0.05em; line-height: 1;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .price-big .cents { font-size: 28px; font-weight: 600; color: rgba(255,255,255,0.7); margin-left: -6px; }
+    .price-unit { font-size: 15px; color: rgba(255,255,255,0.7); margin-top: 14px; }
+    .price-features { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .price-features li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 16px; color: rgba(255,255,255,0.92);
+    }
+    .price-features svg { flex-shrink: 0; margin-top: 4px; color: var(--teal-bright); }
+    .price-features b { color: white; font-weight: 600; }
+
+    .combos {
+      max-width: 880px; margin: 32px auto 0;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .combo {
+      background: white; border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .combo:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .combo .name { font-size: 13px; font-weight: 600; color: var(--gray); letter-spacing: 0.06em; text-transform: uppercase; }
+    .combo .price { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--ink); margin-top: 6px; letter-spacing: -0.02em; }
+    .combo .time { font-size: 13px; color: var(--teal-mid); margin-top: 4px; font-weight: 600; }
+    @media (max-width: 820px) {
+      .price-hero { grid-template-columns: 1fr; padding: 40px 28px; gap: 32px; }
+      .combos { grid-template-columns: 1fr; }
+    }
+
+    /* WHY US */
+    .why { background: white; }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .why-card {
+      padding: 32px; border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--cream) 0%, white 100%);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .why-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--brand-gradient); color: white;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+    }
+    .why-card h3 { font-size: 20px; margin-bottom: 10px; }
+    .why-card p { color: var(--gray); font-size: 15px; line-height: 1.6; }
+    @media (max-width: 820px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* LOCATION */
+    .location {
+      background:
+        radial-gradient(60% 60% at 0% 50%, rgba(125, 211, 208, 0.16), transparent 60%),
+        var(--paper);
+    }
+    .location-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: stretch; }
+    .location-info { display: flex; flex-direction: column; justify-content: center; }
+    .location-info h2 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 24px; }
+    .location-info > p { color: var(--gray); font-size: 17px; margin-bottom: 32px; }
+    .info-list { display: grid; gap: 18px; margin-bottom: 36px; }
+    .info-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 18px; background: white;
+      border-radius: var(--radius-md); border: 1px solid var(--line);
+    }
+    .info-item .icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: var(--teal-soft); color: var(--teal-deep);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .info-item .label { font-size: 12px; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.12em; }
+    .info-item .value { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--ink); margin-top: 4px; line-height: 1.4; }
+    .info-item .value a { color: var(--ink); }
+    .info-item .value a:hover { color: var(--teal-mid); }
+    .info-item .ref { color: var(--gray); font-weight: 500; font-size: 14px; font-family: var(--font-body); }
+    .map-wrap {
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      min-height: 480px; background: var(--teal-deep); position: relative;
+    }
+    .map-wrap iframe { width: 100%; height: 100%; min-height: 480px; border: 0; display: block; }
+    @media (max-width: 900px) {
+      .location-grid { grid-template-columns: 1fr; gap: 40px; }
+      .map-wrap, .map-wrap iframe { min-height: 360px; }
+    }
+
+    /* FINAL CTA */
+    .final-cta { padding: 100px 0; background: var(--ink); color: white; position: relative; overflow: hidden; }
+    .final-cta::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(50% 60% at 80% 30%, rgba(79, 184, 181, 0.22), transparent 60%),
+        radial-gradient(40% 50% at 10% 80%, rgba(125, 211, 208, 0.18), transparent 60%);
+    }
+    .final-cta .container { position: relative; }
+    .final-cta-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; }
+    .final-cta h2 { color: white; font-size: clamp(36px, 5vw, 60px); letter-spacing: -0.03em; }
+    .final-cta h2 .accent {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      font-style: italic;
+    }
+    .final-cta p { color: rgba(255,255,255,0.75); font-size: 18px; margin-top: 18px; max-width: 500px; }
+    .final-cta-actions { display: flex; flex-direction: column; gap: 14px; }
+    .final-cta-actions .btn { justify-content: center; padding: 18px 28px; font-size: 16px; }
+    @media (max-width: 820px) { .final-cta-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+    /* FOOTER */
+    .footer { padding: 56px 0 32px; background: #07181C; color: rgba(255,255,255,0.6); font-size: 14px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+    .footer h4 { color: white; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; }
+    .footer-brand .logo { font-size: 22px; }
+    .footer-brand p { margin-top: 14px; max-width: 320px; line-height: 1.6; }
+    .footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .footer a:hover { color: var(--teal-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 13px;
+    }
+    .footer-social { display: flex; gap: 10px; margin-top: 16px; }
+    .footer-social a {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7);
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .footer-social a:hover { background: var(--teal-mid); color: white; transform: translateY(-2px); }
+    @media (max-width: 820px) { .footer-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* WHATSAPP FAB */
+    .whats-fab {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366; color: white;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+      z-index: 40; transition: transform 0.2s ease;
+    }
+    .whats-fab:hover { transform: scale(1.08); }
+    .whats-fab svg { width: 30px; height: 30px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        Pioneira
+        <small>Autosserviço · Sousa-PB</small>
+      </a>
+      <nav class="nav-links">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#precos">Preços</a>
+        <a href="#por-que">Por que nós</a>
+        <a href="#local">Onde estamos</a>
+      </nav>
+      <a href="https://wa.me/5583999299005?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Pioneira%20e%20queria%20tirar%20uma%20d%C3%BAvida." class="nav-cta" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4l-2.6-1.3c-.4-.2-.8-.1-1 .2l-.8.9c-.2.2-.5.3-.8.1-.9-.5-1.9-1.1-2.6-2-.7-.7-1.3-1.7-1.8-2.6-.1-.3 0-.6.2-.8l.9-.8c.3-.2.4-.6.2-1L7.9 4.5c-.2-.4-.6-.6-1-.5l-1.4.4c-.4.1-.7.5-.7 1 .1 1.5.7 5 4.1 8.4 3.4 3.4 6.9 4 8.4 4.1.5 0 .9-.3 1-.7l.4-1.4c.1-.4-.1-.8-.5-1zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.1-1.4c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+    <div class="bubble b4"></div>
+
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="hero-eyebrow">
+          <span class="badge">1ª</span>
+          A primeira lavanderia de autosserviço de Sousa-PB
+        </span>
+        <h1>
+          Tudo pronto em <span class="accent">75 minutos</span>.<br />
+          Por R$ 15,90.
+        </h1>
+        <p class="hero-sub">
+          Lave ou seque pelo mesmo preço. OMO, Comfort e Alvejante já inclusos.
+          Sem espera, sem complicação — você usa as máquinas e leva sua roupa pronta pra casa.
+        </p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/5583999299005?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Pioneira%20e%20queria%20tirar%20uma%20d%C3%BAvida." class="btn btn-whats" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4l-2.6-1.3c-.4-.2-.8-.1-1 .2l-.8.9c-.2.2-.5.3-.8.1-.9-.5-1.9-1.1-2.6-2-.7-.7-1.3-1.7-1.8-2.6-.1-.3 0-.6.2-.8l.9-.8c.3-.2.4-.6.2-1L7.9 4.5c-.2-.4-.6-.6-1-.5l-1.4.4c-.4.1-.7.5-.7 1 .1 1.5.7 5 4.1 8.4 3.4 3.4 6.9 4 8.4 4.1.5 0 .9-.3 1-.7l.4-1.4c.1-.4-.1-.8-.5-1zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.1-1.4c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            Falar no WhatsApp
+          </a>
+          <a href="#como-funciona" class="btn btn-secondary">Como funciona</a>
+        </div>
+        <div class="hero-trust">
+          <span class="trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Tudo em <b>75 min</b>
+          </span>
+          <span class="trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <b>OMO, Comfort</b> inclusos
+          </span>
+          <span class="trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Bairro <b>Estreito</b>, Sousa-PB
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-hidden="true">
+        <div class="machine">
+          <div class="machine-top">
+            <span class="machine-led"></span>
+            <span class="machine-led"></span>
+            <span class="machine-led"></span>
+          </div>
+          <div class="drum"></div>
+          <div class="machine-label">Ciclo <span>completo</span> · 75 min</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES STRIP -->
+  <div class="features-strip">
+    <div class="container strip-grid">
+      <div class="strip-item">
+        <span class="strip-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </span>
+        Lavar + secar em 75 min
+      </div>
+      <div class="strip-item">
+        <span class="strip-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </span>
+        PIX, cartão e dinheiro
+      </div>
+      <div class="strip-item">
+        <span class="strip-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+        </span>
+        Wi-Fi grátis enquanto espera
+      </div>
+      <div class="strip-item">
+        <span class="strip-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        Produtos de marca inclusos
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section id="como-funciona" class="how">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Como funciona</span>
+        <h2>Três passos. 75 minutos. Roupa pronta pra guardar.</h2>
+        <p>Você mesmo opera as máquinas — é simples, rápido e pague só pelo ciclo que usar.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>Chegue com sua roupa</h3>
+          <p>Não precisa separar antes nem trazer sabão. Já está tudo incluso: OMO, Comfort e Alvejante.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">02</div>
+          <h3>Pague R$ 15,90 no display</h3>
+          <p>Escolha lavar ou secar, pague com PIX ou cartão no painel da máquina e inicie o ciclo.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
+          <h3>Saia com tudo pronto</h3>
+          <p>Em 75 minutos: lavagem completa, secagem e sua roupa pronta pra dobrar e guardar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="precos" class="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Preço único</span>
+        <h2>R$ 15,90. Sem letra miúda.</h2>
+        <p>Mesmo preço pra lavar ou pra secar. Produtos inclusos. Sem taxa de entrada, sem mensalidade, sem surpresa.</p>
+      </div>
+
+      <div class="price-hero reveal">
+        <div>
+          <div class="price-tag-top">Por ciclo · Lave OU Seque</div>
+          <div class="price-big">
+            <span class="currency">R$</span>
+            <span class="amount">15</span>
+            <span class="cents">,90</span>
+          </div>
+          <div class="price-unit">Mesmo valor pra lavagem ou secagem.</div>
+        </div>
+        <ul class="price-features">
+          <li>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><b>OMO, Comfort e Alvejante</b> inclusos no preço</span>
+          </li>
+          <li>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Ciclo completo em <b>até 40 minutos</b></span>
+          </li>
+          <li>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>PIX, cartão de crédito, débito ou dinheiro</span>
+          </li>
+          <li>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Sem taxa, sem mensalidade, sem cadastro</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="combos reveal">
+        <div class="combo">
+          <div class="name">Só Lavar</div>
+          <div class="price">R$ 15,90</div>
+          <div class="time">~35 min</div>
+        </div>
+        <div class="combo">
+          <div class="name">Só Secar</div>
+          <div class="price">R$ 15,90</div>
+          <div class="time">~40 min</div>
+        </div>
+        <div class="combo">
+          <div class="name">Lavar + Secar</div>
+          <div class="price">R$ 31,80</div>
+          <div class="time">tudo pronto em 75 min</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="por-que" class="why">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Por que a Pioneira</span>
+        <h2>Mais que uma lavanderia — um espaço pensado pra você.</h2>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>A 1ª de Sousa-PB</h3>
+          <p>Fomos os pioneiros do autosserviço aqui na cidade. Estrutura nova, máquinas novas e o conceito que está mudando como Sousa lava roupa.</p>
+        </div>
+
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Tudo pronto em 75 min</h3>
+          <p>Lava e seca enquanto você toma um café, resolve outras coisas ou só descansa. De "roupa suja" pra "pronta pro armário" em pouco mais de uma hora.</p>
+        </div>
+
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Produtos de marca inclusos</h3>
+          <p>OMO, Comfort e Alvejante — o cuidado da sua roupa não é opcional aqui. Já vem dosado certo no preço.</p>
+        </div>
+
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Mais barato que ter máquina</h3>
+          <p>Sem conta de luz extra, sem conta de água, sem manutenção, sem sabão pra comprar. R$ 15,90 e acabou.</p>
+        </div>
+
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <h3>Paga como quiser</h3>
+          <p>PIX direto na máquina, cartão de crédito, débito ou dinheiro. Funciona pra todo mundo.</p>
+        </div>
+
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3>Suporte por WhatsApp</h3>
+          <p>Dúvida sobre como usar? Problema com a máquina? Manda mensagem no nosso WhatsApp que a gente resolve rápido.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="local" class="location">
+    <div class="container location-grid">
+      <div class="location-info reveal">
+        <span class="eyebrow">Onde estamos</span>
+        <h2>Bairro Estreito, fácil de chegar.</h2>
+        <p>Estamos em frente à Academia Kfitness, na Loja 3. Próximo ao comércio do Estreito — vem lavar enquanto resolve outras coisas.</p>
+
+        <div class="info-list">
+          <div class="info-item">
+            <span class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div>
+              <div class="label">Endereço</div>
+              <div class="value">Rua Nestor José Sarmento, Loja 3<br />Estreito · Sousa-PB · CEP 58800-100<br /><span class="ref">Em frente à Academia Kfitness</span></div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <div>
+              <div class="label">WhatsApp</div>
+              <div class="value"><a href="https://wa.me/5583999299005" target="_blank" rel="noopener">(83) 99929-9005</a></div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </span>
+            <div>
+              <div class="label">Instagram</div>
+              <div class="value"><a href="https://instagram.com/pioneiralavanderiapb" target="_blank" rel="noopener">@pioneiralavanderiapb</a></div>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=Rua+Nestor+Jos%C3%A9+Sarmento%2C+Estreito%2C+Sousa+-+PB%2C+58800-100" target="_blank" rel="noopener" class="btn btn-primary">
+          Abrir no Google Maps
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+
+      <div class="map-wrap reveal">
+        <iframe
+          src="https://www.google.com/maps?q=Rua+Nestor+Jos%C3%A9+Sarmento%2C+Estreito%2C+Sousa+-+PB&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização da Pioneira Lavanderia em Sousa-PB"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container final-cta-grid">
+      <div class="reveal">
+        <h2>Vem lavar com a <span class="accent">Pioneira</span>.</h2>
+        <p>
+          R$ 15,90 por ciclo. OMO, Comfort e Alvejante inclusos. Tudo pronto em 75 minutos.
+          A primeira lavanderia de autosserviço de Sousa-PB tá esperando você.
+        </p>
+      </div>
+      <div class="final-cta-actions reveal">
+        <a href="https://wa.me/5583999299005?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Pioneira%20e%20queria%20tirar%20uma%20d%C3%BAvida." class="btn btn-whats" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4l-2.6-1.3c-.4-.2-.8-.1-1 .2l-.8.9c-.2.2-.5.3-.8.1-.9-.5-1.9-1.1-2.6-2-.7-.7-1.3-1.7-1.8-2.6-.1-.3 0-.6.2-.8l.9-.8c.3-.2.4-.6.2-1L7.9 4.5c-.2-.4-.6-.6-1-.5l-1.4.4c-.4.1-.7.5-.7 1 .1 1.5.7 5 4.1 8.4 3.4 3.4 6.9 4 8.4 4.1.5 0 .9-.3 1-.7l.4-1.4c.1-.4-.1-.8-.5-1zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.1-1.4c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          (83) 99929-9005
+        </a>
+        <a href="#local" class="btn btn-secondary">
+          Ver localização
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            Pioneira
+            <small>Autosserviço · Sousa-PB</small>
+          </a>
+          <p>A 1ª lavanderia de autosserviço de Sousa-PB. R$ 15,90 por ciclo, tudo pronto em 75 minutos.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/pioneiralavanderiapb" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://wa.me/5583999299005" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4l-2.6-1.3c-.4-.2-.8-.1-1 .2l-.8.9c-.2.2-.5.3-.8.1-.9-.5-1.9-1.1-2.6-2-.7-.7-1.3-1.7-1.8-2.6-.1-.3 0-.6.2-.8l.9-.8c.3-.2.4-.6.2-1L7.9 4.5c-.2-.4-.6-.6-1-.5l-1.4.4c-.4.1-.7.5-.7 1 .1 1.5.7 5 4.1 8.4 3.4 3.4 6.9 4 8.4 4.1.5 0 .9-.3 1-.7l.4-1.4c.1-.4-.1-.8-.5-1zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.1-1.4c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#como-funciona">Como funciona</a></li>
+            <li><a href="#precos">Preços</a></li>
+            <li><a href="#por-que">Por que nós</a></li>
+            <li><a href="#local">Onde estamos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="https://wa.me/5583999299005" target="_blank" rel="noopener">(83) 99929-9005</a></li>
+            <li><a href="https://instagram.com/pioneiralavanderiapb" target="_blank" rel="noopener">@pioneiralavanderiapb</a></li>
+            <li>Rua Nestor José Sarmento, Loja 3</li>
+            <li>Estreito · Sousa-PB · 58800-100</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Pioneira Lavanderia de Autosserviço.</span>
+        <span>Feito com cuidado em Sousa-PB.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FAB -->
+  <a href="https://wa.me/5583999299005?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Pioneira%20e%20queria%20tirar%20uma%20d%C3%BAvida." class="whats-fab" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4l-2.6-1.3c-.4-.2-.8-.1-1 .2l-.8.9c-.2.2-.5.3-.8.1-.9-.5-1.9-1.1-2.6-2-.7-.7-1.3-1.7-1.8-2.6-.1-.3 0-.6.2-.8l.9-.8c.3-.2.4-.6.2-1L7.9 4.5c-.2-.4-.6-.6-1-.5l-1.4.4c-.4.1-.7.5-.7 1 .1 1.5.7 5 4.1 8.4 3.4 3.4 6.9 4 8.4 4.1.5 0 .9-.3 1-.7l.4-1.4c.1-.4-.1-.8-.5-1zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.1-1.4c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+  </a>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
