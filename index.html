@@ -178,7 +178,12 @@
     .trust-item b { color: var(--ink); font-weight: 600; }
 
     /* HERO VISUAL */
-    .hero-visual { position: relative; aspect-ratio: 1; max-width: 520px; justify-self: end; }
+    .hero-visual {
+      position: relative;
+      width: min(100%, 520px);
+      aspect-ratio: 1;
+      justify-self: end;
+    }
     .machine {
       position: absolute; inset: 12%;
       background: white;
@@ -244,7 +249,7 @@
     @media (max-width: 900px) {
       .hero { padding: 56px 0 80px; }
       .hero-grid { grid-template-columns: 1fr; gap: 48px; }
-      .hero-visual { max-width: 380px; justify-self: center; }
+      .hero-visual { width: min(100%, 380px); justify-self: center; }
     }
 
     /* FEATURES STRIP */
