@@ -36,8 +36,8 @@ Decisão deliberada: **zero build**, single-file.
 ```
 <head>          metadados, OG tags, fontes, CSS embedado
 <nav>           sticky com glassmorphism
-<section.hero>  headline + CTA + máquina animada em CSS
-<.features-strip>  barra preta com 4 benefícios
+<section.hero>  headline + CTA + trust badges + máquina animada em CSS
+<.features-strip>  barra preta com 4 benefícios rápidos
 <section.how>      como funciona (3 passos)
 <section.services> preço único + 3 combos
 <section.why>      6 cards de diferenciais
@@ -110,6 +110,7 @@ Instagram:   @pioneiralavanderiapb
 Preço:       R$ 15,90 por ciclo (lavar OU secar)
 Combo:       Lavar + Secar = R$ 31,80
 Tempos:      Lavagem ~35min · Secagem ~40min · Total 75min
+Capacidade:  Até 10kg por ciclo
 Inclusos:    OMO, Comfort e Alvejante
 Pagamento:   PIX, cartão crédito/débito, dinheiro
 Diferencial: 1ª lavanderia de autosserviço de Sousa-PB
@@ -120,6 +121,36 @@ Diferencial: 1ª lavanderia de autosserviço de Sousa-PB
 ?text=Olá!%20Vim%20pelo%20site%20da%20Pioneira%20e%20queria%20tirar%20uma%20dúvida.
 ```
 Está em 4 lugares (navbar, hero, CTA final, FAB). Se editar, edita nos 4.
+
+---
+
+## Contexto competitivo e modelo de negócio
+
+Informação crítica para decisões de design e copy. Não inventar nem extrapolar além do que está aqui.
+
+### Concorrência em Sousa-PB
+
+| # | Tipo | Status |
+|---|------|--------|
+| Pioneira | Autosserviço (self-service) — **criadora do conceito "deixe-retire" na cidade** | Operando |
+| 2ª | Franquia | Operando |
+| 3ª | Butano (empresa local) | Operando |
+| 4ª | Grande porte, descrita como "gigante e bem chique", ligada ao grupo Voita (frios) | **Inaugura junho 2026** |
+
+**Implicação de design:** o mercado saiu de monopólio para 4 players em pouco tempo. A 4ª lavanderia terá investimento pesado e infraestrutura sofisticada. O site de Pioneira não pode parecer amador ou genérico — precisa transmitir pioneirismo e confiança com igual qualidade visual.
+
+### Modelo de negócio
+
+- Investimento com capital próprio, sem dívida externa
+- **Autossustentável desde o 3º mês** — 100% dos lucros reinvestidos na operação
+- Prolabore (retirada de lucro pelo proprietário) previsto apenas a partir de ~2030
+- Modelo de renda passiva: mínima intervenção operacional diária do proprietário
+
+**Implicação de copy:** o cliente (Pablo) não precisa de volume urgente para sobreviver — pode posicionar Pioneira com confiança e sem desespero. Tom de liderança de mercado, não de captação agressiva.
+
+### Diferencial histórico
+
+Pioneira **inventou o serviço "deixe-retire" em Sousa-PB** — antes, não existia lavanderia self-service nem drop-off profissional na cidade. Esse pioneirismo é ativo de marca e deve ser explorado no copy quando relevante.
 
 ---
 
@@ -139,6 +170,9 @@ Está em 4 lugares (navbar, hero, CTA final, FAB). Se editar, edita nos 4.
 
 ### Trocar texto / copy
 Editar direto no HTML. Procurar pela string no arquivo.
+
+### Trocar capacidade do cesto
+Buscar `10kg` no arquivo. Hoje aparece nos badges do hero, na `features-strip` e no bloco de preço.
 
 ### Trocar preço
 Buscar `15,90` e `31,80` no arquivo (~6 ocorrências). Editar todas. Confirmar com cliente antes.
@@ -171,7 +205,7 @@ Iframe do Google Maps na seção `.location`. Para atualizar coordenadas exatas,
 - Não adicionar bibliotecas JS (jQuery, Alpine, htmx, etc) sem motivo concreto
 - Não converter para framework (React, Vue, Next) sem requisito real
 - Não usar Tailwind ou outro framework CSS — o design system está em CSS vars, manter assim
-- Não inventar preços, tempos ou produtos. Confirmar com Pablo antes
+- Não inventar preços, tempos, capacidade, produtos ou benefícios operacionais. Confirmar com Pablo antes
 - Não adicionar pop-ups, modais de "aceite cookies" (não está coletando dado nenhum), nem chatbot fake
 - Não usar fontes diferentes de Bricolage Grotesque + Plus Jakarta Sans
 - Não remover `prefers-reduced-motion` — acessibilidade não é opcional
@@ -204,6 +238,37 @@ gh repo create pioneira-lavanderia --public --source=. --push
 4. Schema.org LocalBusiness markup para SEO local de Sousa-PB
 5. Favicon + manifest (PWA básico)
 6. Google Analytics 4 ou Plausible (privacidade-friendly) se cliente quiser métricas
+
+---
+
+## Prompting Claude for Design
+
+Best practices when asking Claude to make visual/UX changes to this project:
+
+### What works
+- **Set role + context first:** "You are a senior UI/UX designer working on Pioneira, a self-service laundromat landing page targeting working-class mobile users in a small city in Brazil's Northeast. Most visitors arrive via Instagram on 4G."
+- **Paste design tokens directly** — the `:root` block from `index.html` — before asking for anything visual
+- **Name a specific aesthetic direction**, not a vague adjective. Good: "utilitarian trust — clean like a clinic, warm like a local shop." Bad: "modern" or "clean"
+- **Frame around 4 dimensions before any output:** purpose (who, why), tone (pick specific aesthetic), constraints (zero-build, CSS vars only, no libs), differentiation (first self-service laundromat in the city — novelty + trust)
+- **Explicitly forbid defaults:** "avoid card grids with drop shadows, avoid Inter/Roboto lookalike layouts, avoid hero patterns with centered headline + two buttons"
+
+### What kills output
+- Vague prompts → generic "AI slop" Inter + card grid
+- Over-prescriptive step-by-step instructions → Claude pattern-matches to safe defaults instead of solving the problem
+- No context → no differentiation
+
+### Template prompt structure
+```
+Role: senior UX designer, conversion-focused landing pages for local Brazilian businesses.
+Product: [brief — 1 sentence]
+Audience: [who + how they arrive + device + connection]
+Tone: [evocative direction — not adjectives, an image]
+Design system: [paste :root block]
+Constraint: [stack, no libs, CSS vars only]
+Differentiation: [what makes this unique]
+Task: [specific ask]
+Avoid: [anti-patterns to dodge]
+```
 
 ---
 
