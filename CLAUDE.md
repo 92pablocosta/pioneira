@@ -37,8 +37,8 @@ Decisão deliberada: **zero build**, single-file.
 <head>          metadados, OG tags, fontes, CSS embedado
 <nav>           sticky com glassmorphism
 <section.hero>  headline + CTA + trust badges + máquina animada em CSS
-<.features-strip>  barra preta com 4 benefícios rápidos
-<section.how>      como funciona (3 passos)
+<.features-strip>  barra preta com 4 benefícios rápidos (último: "Não precisa trazer nada")
+<section.how>      como funciona (3 passos enriquecidos) + Cicclo app card abaixo dos steps
 <section.services> preço único + 3 combos
 <section.why>      6 cards de diferenciais
 <section.location> endereço + Google Maps iframe

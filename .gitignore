@@ -12,5 +12,7 @@
 *.swp
 *.swo
 
-# Info / internal assets (not for production)
+# Internal / AI working files (not for production)
 info/
+design_handoff_b2_dual_service/
+claude-design-prompt.md
