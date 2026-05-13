@@ -95,6 +95,16 @@ Não trocar essas fontes. Foram escolhidas pra fugir do "AI slop" genérico (Int
 
 ---
 
+## Operational Detail (how the business actually works)
+
+Full step-by-step flows (wash + dry), equipment count, Cicclo app features, cycle options, official copy lines, and landing page implications are documented in:
+
+**[`info/business-info.md`](info/business-info.md)**
+
+Consult this file before writing or editing any copy related to "como funciona", pricing context, machine UX, or the Cicclo app. Do not invent operational details — if it's not in `business-info.md` or below, ask Pablo.
+
+---
+
 ## Dados do cliente (NÃO ALTERAR sem confirmação)
 
 ```
