@@ -455,15 +455,27 @@ Adicionado em 2026-05-14. Visível apenas em ≤820px. Implementado com `<detail
 
 **Links espelhados:** mesmo conjunto de 6 links do `.nav-links` desktop. Manter em sincronia se nav links mudarem.
 
+**Ordem correta (espelha DOM):** Como funciona → Preços → Por que nós → Nossa história → Onde estamos → FAQ
+
 ---
 
-## Hero image — CLS fix
+## Hero image — CLS fix + webp
 
-`assets/img1.jpg`: natural 666×960px. `<img>` agora tem `width="666" height="960"` para o browser reservar espaço antes de carregar — elimina layout shift (CLS).
+`assets/img1.jpg` (666×960px) e `assets/im2.jpeg` (853×1280px): ambos têm `width`/`height` naturais no `<img>` para o browser reservar espaço antes de carregar (elimina CLS). CSS controla tamanho visual via `width: 100%; height: auto`.
 
-`assets/im2.jpeg` (seção `#nossa-historia`): natural 853×1280px. Mesma correção: `width="853" height="1280"`.
+Ambos envolvidos em `<picture>` com `<source srcset="*.webp" type="image/webp">`. Browser serve webp para Chrome/Firefox/Safari modernos, fallback JPG/JPEG para os demais.
 
-CSS controla o tamanho visual real via `.hero-photo { width: 100%; height: auto; }` — os atributos HTML apenas preservam aspect ratio no slot.
+**Assets disponíveis:**
+- `assets/img1.jpg` + `assets/img1.webp` (83KB)
+- `assets/im2.jpeg` + `assets/im2.webp` (59KB)
+
+Se substituir as fotos, gerar webp par: `cwebp -q 82 <novo.jpg> -o <novo.webp>`.
+
+## Foto da seção `#nossa-historia` — exibição completa
+
+Anteriormente: `object-fit: cover` + `max-height: 420px` no mobile cortava o retrato 853×1280.
+
+Correção: removido `object-fit: cover` do base e removido `max-height: 420px` do breakpoint ≤900px. Foto exibe na proporção natural em todos os tamanhos — essencial para ver pai e filha na íntegra.
 
 ---
 
