@@ -16,3 +16,8 @@
 info/
 design_handoff_b2_dual_service/
 claude-design-prompt.md
+
+# Large assets not tracked by git
+assets/*.pdf
+assets/*.pptx
+assets/*.key
