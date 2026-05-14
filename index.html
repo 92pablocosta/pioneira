@@ -445,7 +445,13 @@
 
     /* WHY US */
     .why { background: white; }
-    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    @media (max-width: 1100px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+    .why-badge {
+      display: inline-block; margin-top: 10px;
+      font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px;
+      background: var(--teal-soft); color: var(--teal-deep);
+    }
     .why-card {
       padding: 32px; border-radius: var(--radius-md);
       border: 1px solid var(--line);
@@ -461,7 +467,38 @@
     }
     .why-card h3 { font-size: 20px; margin-bottom: 10px; }
     .why-card p { color: var(--gray); font-size: 15px; line-height: 1.6; }
-    @media (max-width: 820px) { .why-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* FAQ */
+    .faq { background: var(--cream); }
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+    details.faq-item {
+      border: 1px solid var(--line); border-radius: var(--radius-md);
+      background: white; overflow: hidden;
+      transition: box-shadow 0.2s ease;
+    }
+    details.faq-item[open] { box-shadow: 0 4px 20px rgba(26, 95, 110, 0.08); }
+    details.faq-item summary {
+      padding: 20px 28px; font-size: 16px; font-weight: 600;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      user-select: none;
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::after {
+      content: ""; width: 22px; height: 22px; flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%232D8B96' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-size: contain; background-repeat: no-repeat;
+      transition: transform 0.25s ease;
+    }
+    details.faq-item[open] summary::after { transform: rotate(180deg); }
+    details.faq-item summary:hover { color: var(--teal-deep); }
+    .faq-body { padding: 0 28px 22px; color: var(--gray); font-size: 15px; line-height: 1.7; }
+    .faq-body p { margin: 0; }
+    .faq-body p + p { margin-top: 10px; }
+    .faq-body ul { margin: 8px 0 0 0; padding-left: 20px; }
+    .faq-body ul li { margin-bottom: 4px; }
+    @media (max-width: 820px) { details.faq-item summary { padding: 18px 20px; } .faq-body { padding: 0 20px 18px; } }
 
     /* LOCATION */
     .location {
@@ -789,6 +826,7 @@
         <a href="#como-funciona">Como funciona</a>
         <a href="#precos">Preços</a>
         <a href="#por-que">Por que nós</a>
+        <a href="#faq">FAQ</a>
         <a href="#nossa-historia">Nossa história</a>
         <a href="#local">Onde estamos</a>
       </nav>
@@ -1088,7 +1126,8 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
           <h3>Produtos de marca inclusos</h3>
-          <p>OMO, Comfort e Alvejante profissional <strong>sem cloro</strong> — não danifica nem mancha, ajuda a renovar a cor das peças, deixa as brancas ainda mais brancas e tem ação antimicrobiana. Já vem dosado certo no preço.</p>
+          <p>OMO e Comfort super concentrados da linha profissional — limpeza profunda, maciez e roupas muito mais perfumadas. Alvejante <strong>sem cloro</strong> incluso: não danifica, renova cor, ação antimicrobiana.</p>
+          <span class="why-badge">+ Finalizador exclusivo disponível</span>
         </div>
 
         <div class="why-card reveal">
@@ -1111,9 +1150,121 @@
           <div class="why-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
-          <h3>Suporte por WhatsApp</h3>
-          <p>Dúvida sobre como usar? Problema com a máquina? Manda mensagem no nosso WhatsApp que a gente resolve rápido.</p>
+          <h3>Atendimento presente</h3>
+          <p>Atendente presencial de seg–sex, 9h30–14h e 16h–19h30. Fora desse horário, manda mensagem no WhatsApp — a gente resolve rápido.</p>
         </div>
+
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3>Ambiente que acolhe</h3>
+          <p>Enquanto suas roupas lavam, relaxe num espaço climatizado com poltronas, Wi-Fi, tomadas, café, água e massageador de pés.</p>
+        </div>
+
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+          </div>
+          <h3>Máquinas de alta performance</h3>
+          <p>Importadas, produzidas em aço inox, com até 1200 RPM. Lavam melhor, centrifugam mais forte — suas roupas saem mais limpas e secam muito mais rápido.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Dúvidas frequentes</span>
+        <h2>Perguntas Frequentes</h2>
+        <p>Não encontrou o que procura? Fala com a gente pelo WhatsApp.</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>Preciso levar sabão e amaciante?</summary>
+          <div class="faq-body">
+            <p>Não. Todas as lavagens já incluem sabão e amaciante profissional super concentrados da linha OMO e Comfort, liberados automaticamente pelas máquinas.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary>Vocês passam as roupas?</summary>
+          <div class="faq-body">
+            <p>Não trabalhamos com serviço de passar roupas.</p>
+            <p>Mas nossas secadoras deixam as peças quentes e praticamente sem amassados. Na maioria das vezes, basta dobrar as roupas ainda quentes logo após a secagem para evitar o uso do ferro.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary>Quantas peças cabem na máquina?</summary>
+          <div class="faq-body">
+            <p>O valor é por cesto e não por quantidade de peças — tudo que couber dentro do cesto custa R$ 15,90. A quantidade varia conforme o tipo de roupa:</p>
+            <ul>
+              <li>Roupas infantis: até cerca de 25 peças</li>
+              <li>Calças jeans: em média 8 peças</li>
+              <li>Edredons: normalmente 1 ou 2 unidades</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary>Posso lavar edredons, cortinas e redes?</summary>
+          <div class="faq-body">
+            <p>Sim. Você pode lavar edredons, mantas, redes, cortinas e roupas volumosas, desde que caibam adequadamente dentro do cesto da máquina.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary>A Pioneira abre em feriados?</summary>
+          <div class="faq-body">
+            <p>Sim! Funcionamos todos os dias, inclusive feriados, das 6h às 22h. Após esse horário, o acesso também pode ser realizado através do aplicativo Cicclo.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary>Preciso agendar horário?</summary>
+          <div class="faq-body">
+            <p>Não é necessário agendamento. Você pode vir no horário mais conveniente para sua rotina.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary>Posso acompanhar as máquinas pelo celular?</summary>
+          <div class="faq-body">
+            <p>Sim! Com o aplicativo Cicclo você acompanha as máquinas em tempo real, verifica disponibilidade e realiza pagamentos diretamente pelo app.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary>Quais formas de pagamento vocês aceitam?</summary>
+          <div class="faq-body">
+            <p>Aceitamos Pix, cartão e saldo pela carteira digital do app Cicclo.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary>Existe alguém para ajudar no local?</summary>
+          <div class="faq-body">
+            <p>Sim. Temos atendente presencial disponível de segunda a sexta-feira, das 9h30 às 14h e das 16h às 19h30.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary>As roupas de clientes diferentes se misturam?</summary>
+          <div class="faq-body">
+            <p>Não. Cada cliente utiliza sua própria máquina durante todo o processo de lavagem e secagem.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary>Vocês possuem serviço de "Deixe &amp; Retire"?</summary>
+          <div class="faq-body">
+            <p>Sim! No serviço Deixe &amp; Retire, você entrega suas roupas e nossa equipe cuida de todo o processo: lavagem, secagem, dobra e organização. Depois é só retirar — ou enviar Uber/mototáxi para buscar.</p>
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -1275,6 +1426,7 @@
             <li><a href="#como-funciona">Como funciona</a></li>
             <li><a href="#precos">Preços</a></li>
             <li><a href="#por-que">Por que nós</a></li>
+            <li><a href="#faq">FAQ</a></li>
             <li><a href="#nossa-historia">Nossa história</a></li>
             <li><a href="#local">Onde estamos</a></li>
           </ul>

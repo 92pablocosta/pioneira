@@ -34,18 +34,20 @@ Decisão deliberada: **zero build**, single-file.
 `index.html` é dividido em blocos comentados na ordem de renderização:
 
 ```
-<head>          metadados, OG tags, fontes, CSS embedado
-<nav>           sticky com glassmorphism
-<section.hero>  headline + CTA + trust badges + máquina animada em CSS
-<.features-strip>  barra preta com 4 benefícios rápidos (último: "Não precisa trazer nada")
-<section.how>      como funciona (3 passos enriquecidos) + Cicclo app card abaixo dos steps
-<section.services> preço único + 3 combos + card horários Deixe e Retire (.dr-card)
-<section.why>      6 cards de diferenciais
-<section.location> endereço + Google Maps iframe
+<head>              metadados, OG tags, fontes, CSS embedado
+<nav>               sticky com glassmorphism
+<section.hero>      headline + CTA + trust badges + foto da loja (assets/img1.jpg)
+<.features-strip>   barra preta com 4 benefícios rápidos (último: "Não precisa trazer nada")
+<section.how>       como funciona (3 passos) + .cicclo-card + .restrictions-note
+<section.services>  preço único + 3 combos + .dr-card (Deixe e Retire)
+<section.why>       8 cards de diferenciais (grid 4-col)
+<section#faq>       11 perguntas frequentes em accordion <details>/<summary>
+<section#nossa-historia> história da marca (2 colunas: texto + foto assets/im2.jpeg)
+<section.location>  endereço + Google Maps iframe
 <section.final-cta> CTA escuro final
-<footer>        navegação + contato + redes sociais
-<a.whats-fab>   botão flutuante de WhatsApp
-<script>        IntersectionObserver para scroll reveal
+<footer>            navegação + contato + redes sociais
+<a.whats-fab>       botão flutuante de WhatsApp
+<script>            IntersectionObserver para scroll reveal
 ```
 
 CSS está dentro de `<style>` no `<head>`, organizado por seção com banners de comentário.
@@ -122,7 +124,8 @@ Preço:       R$ 15,90 por ciclo (lavar OU secar)
 Combo:       Lavar + Secar = R$ 31,80
 Tempos:      Lavagem ~35min · Secagem ~40min · Total 75min
 Capacidade:  Até 10kg por ciclo
-Inclusos:    OMO, Comfort e Alvejante
+Inclusos:    OMO, Comfort e Alvejante profissional sem cloro
+             (não danifica, não mancha, renova cor, ação antimicrobiana)
 Pagamento:   PIX, cartão crédito/débito, dinheiro
 Diferencial: 1ª lavanderia de autosserviço de Sousa-PB
 
@@ -175,7 +178,7 @@ Pioneira **inventou o serviço "deixe-retire" em Sousa-PB** — antes, não exis
 - **Indentação:** 2 espaços
 - **Aspas em HTML:** duplas; **em JS:** simples
 - **Classes CSS:** kebab-case (`.price-hero`, `.why-card`)
-- **IDs:** kebab-case PT-BR para seções de âncora (`#como-funciona`, `#precos`, `#por-que`, `#local`)
+- **IDs:** kebab-case PT-BR para seções de âncora (`#como-funciona`, `#precos`, `#por-que`, `#nossa-historia`, `#local`)
 - **SVG inline:** sempre que possível, com `width`/`height` explícitos. Não usar libs de ícones.
 
 ---
@@ -270,6 +273,41 @@ gh repo create pioneira-lavanderia --public --source=. --push
 
 ---
 
+## Restrições de lavagem
+
+Componente `.restrictions-note` no final de `#como-funciona`, após `.cicclo-card`.
+
+**Itens não aceitos:**
+- Tênis e calçados em geral
+- Roupas hospitalares
+- Roupinhas de pet
+- Pano de chão
+- Roupas com óleo, graxa, querosene ou outros produtos inflamáveis
+
+Se a lista mudar, buscar `.restrictions-list` no HTML.
+
+---
+
+## História da marca (`#nossa-historia`)
+
+Seção entre `#por-que` e `#local`. Layout: `.story-grid` (2 colunas no desktop — texto + foto sticky).
+
+**Personagens da história:**
+- **Dona Rita** — avó de uma das fundadoras, lavava roupas de ganho em Sousa. Origem e inspiração da marca.
+- **A filha (fundadora)** — saiu de Sousa aos 20 anos, formada em Biomedicina em JP, descobriu lavanderias de autosserviço lá. Insight na ligação com Dona Rita.
+- **O pai (co-fundador)** — topou o desafio na mesma ligação. Pai e filha fundaram juntos.
+
+**Foto:** `assets/im2.jpeg` — pai e filha na inauguração, com OMO/Comfort na frente, secadoras ao fundo, logo Pioneira visível.
+
+**CSS relevante:**
+- `.story-grid` — grid 2 colunas (1fr 380px), breakpoint 900px → 1 col
+- `.story-quote` — pull quote com borda esquerda `--teal-bright`
+- `.story-insight` — callout do momento do insight (ligação com Dona Rita)
+- `.story-photo-col` — sticky top: 100px no desktop; sobe pro topo no mobile
+- `.story-figure figcaption` — legenda discreta abaixo da foto
+
+---
+
 ## Dados do Cicclo App
 
 App de gerenciamento das máquinas. Já integrado no card `.cicclo-card` na seção `#como-funciona`.
@@ -298,7 +336,9 @@ Hover do card usa `#573f65` (purple escuro — não tem token, hardcoded no hove
 
 ## Dados do Deixe e Retire
 
-Horários do serviço gerenciado (drop-off). Card `.dr-card` na seção `#precos`, após os combos.
+Serviço gerenciado (drop-off). Card `.dr-card` na seção `#precos`, após os combos.
+
+**O que inclui:** a equipe faz lavagem, secagem, dobra e organização. Cliente retira na loja ou manda mototáxi/Uber buscar. Sem custo adicional além do preço normal do ciclo.
 
 ```
 Seg à Sex:  9h30–14h e 16h–19h30
@@ -312,7 +352,7 @@ Se horários mudarem, buscar `.dr-card` no HTML e editar os `<p>` dentro dos `.d
 ## Próximas evoluções previstas
 
 1. ~~Trocar logo CSS pelo PNG/SVG real~~ ✅ feito
-2. Adicionar fotos da loja (fachada + interior + máquinas)
+2. ~~Adicionar fotos da loja~~ ✅ parcial — `assets/img1.jpg` no hero, `assets/im2.jpeg` na seção `#nossa-historia`. Faltam: interior das máquinas, fachada frontal.
 3. Adicionar seção de depoimentos (quando tiver social proof real)
 4. ~~Schema.org LocalBusiness markup para SEO local de Sousa-PB~~ ✅ feito — JSON-LD `LaundryOrDryCleaningService` no `<head>`, com URL, horários e telefone
 5. Favicon + manifest — usar `pioneira-icon-512.png` e `pioneira-icon-transparent.png`
