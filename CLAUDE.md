@@ -39,7 +39,7 @@ Decisão deliberada: **zero build**, single-file.
 <section.hero>  headline + CTA + trust badges + máquina animada em CSS
 <.features-strip>  barra preta com 4 benefícios rápidos (último: "Não precisa trazer nada")
 <section.how>      como funciona (3 passos enriquecidos) + Cicclo app card abaixo dos steps
-<section.services> preço único + 3 combos
+<section.services> preço único + 3 combos + card horários Deixe e Retire (.dr-card)
 <section.why>      6 cards de diferenciais
 <section.location> endereço + Google Maps iframe
 <section.final-cta> CTA escuro final
@@ -195,12 +195,36 @@ Buscar `15,90` e `31,80` no arquivo (~6 ocorrências). Editar todas. Confirmar c
 5. Adicionar `class="reveal"` nos elementos pra scroll animation
 6. Linkar no `<nav>` e no footer
 
-### Trocar logo CSS por imagem real
-Substituir os dois `<a class="logo">...` (navbar + footer) por:
+### Logo — estado atual ✅ (já implementado)
+
+**Navbar** usa imagem real via `.logo-img`:
 ```html
-<a href="#" class="logo-img"><img src="logo.png" alt="Pioneira" /></a>
+<a href="#" class="logo-img" aria-label="Pioneira — Lavanderia de Autosserviço">
+  <picture>
+    <source srcset="assets/pioneira-logo-assets/pioneira-logo-transparent-600.webp" type="image/webp">
+    <img src="assets/pioneira-logo-assets/pioneira-logo-transparent-600.png" alt="Pioneira — Lavanderia de Autosserviço" height="48">
+  </picture>
+</a>
 ```
-Adicionar CSS: `.logo-img img { height: 40px; }` (ajustar)
+CSS: `.logo-img img { height: 48px; }` — ajustar altura aqui se necessário.
+
+**Footer** usa ícone (`pioneira-icon-transparent.png`, 34px) + texto CSS branco:
+```html
+<a href="#" class="logo">
+  <img src="assets/pioneira-logo-assets/pioneira-icon-transparent.png" alt="" aria-hidden="true">
+  Pioneira
+  <small>Autosserviço · Sousa-PB</small>
+</a>
+```
+CSS override no footer: `.footer-brand .logo { background: none; color: white; -webkit-text-fill-color: white; }`
+
+**Assets disponíveis em `assets/pioneira-logo-assets/`:**
+- `pioneira-logo-transparent-600.webp/.png` — logo colorida fundo transparente (nav)
+- `pioneira-logo-transparent.webp/.png` — versão full-res da mesma
+- `pioneira-logo-white-600.webp/.png` — logo fundo branco (não usar em fundo escuro)
+- `pioneira-logo-original-white.webp/.png` — logo fundo branco, full-res
+- `pioneira-icon-512.png` — ícone quadrado 512px (favicon, etc.)
+- `pioneira-icon-transparent.png` — ícone fundo transparente (footer, favicon)
 
 ### Adicionar fotos reais da loja
 Criar pasta `assets/` e usar `<img src="assets/foto-fachada.jpg" />` com `loading="lazy"` e `alt` descritivo. Pode substituir a "máquina" CSS-art do hero por foto real se ficar bom.
@@ -240,13 +264,40 @@ gh repo create pioneira-lavanderia --public --source=. --push
 
 ---
 
+## Dados do Cicclo App
+
+App de gerenciamento das máquinas. Já integrado no card `.cicclo-card` na seção `#como-funciona`.
+
+```
+App Store:   https://apps.apple.com/br/app/cicclo-lavanderia/id1499442397
+Google Play: https://play.google.com/store/apps/details?id=com.begin.laundway&pli=1
+Ícone:       assets/app-cicclo.png
+```
+
+O card tem logo real, 4 feature pills e botões de download (App Store + Google Play) com SVG inline.
+
+---
+
+## Dados do Deixe e Retire
+
+Horários do serviço gerenciado (drop-off). Card `.dr-card` na seção `#precos`, após os combos.
+
+```
+Seg à Sex:  9h30–14h e 16h–19h30
+Sáb e Dom:  Apenas Autosserviço (sem atendimento para Deixe e Retire)
+```
+
+Se horários mudarem, buscar `.dr-card` no HTML e editar os `<p>` dentro dos `.dr-slot`.
+
+---
+
 ## Próximas evoluções previstas
 
-1. Trocar logo CSS pelo PNG/SVG real (quando o cliente enviar arquivo vetorial)
+1. ~~Trocar logo CSS pelo PNG/SVG real~~ ✅ feito
 2. Adicionar fotos da loja (fachada + interior + máquinas)
 3. Adicionar seção de depoimentos (quando tiver social proof real)
 4. Schema.org LocalBusiness markup para SEO local de Sousa-PB
-5. Favicon + manifest (PWA básico)
+5. Favicon + manifest — usar `pioneira-icon-512.png` e `pioneira-icon-transparent.png`
 6. Google Analytics 4 ou Plausible (privacidade-friendly) se cliente quiser métricas
 
 ---
