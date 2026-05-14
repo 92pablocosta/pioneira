@@ -392,7 +392,7 @@ Accordion puro HTML/CSS via `<details>/<summary>`. Zero JS. Acessível nativamen
 
 Para adicionar pergunta: novo `<details class="faq-item reveal">` dentro de `.faq-list`. Para reordenar: mover o bloco `<details>` inteiro.
 
-Seção posicionada entre `#por-que` e `#nossa-historia`. Linkada em nav e footer.
+Seção posicionada após `#local`, antes de `final-cta` — última seção de conteúdo da página. Linkada em nav e footer.
 
 ---
 
@@ -402,9 +402,10 @@ Seção posicionada entre `#por-que` e `#nossa-historia`. Linkada em nav e foote
 2. ~~Adicionar fotos da loja~~ ✅ parcial — `assets/img1.jpg` no hero, `assets/im2.jpeg` na seção `#nossa-historia`. Faltam: interior das máquinas, fachada frontal.
 3. Adicionar seção de depoimentos (quando tiver social proof real)
 4. ~~Schema.org LocalBusiness markup para SEO local de Sousa-PB~~ ✅ feito — JSON-LD `LaundryOrDryCleaningService` no `<head>`, com URL, horários e telefone
-5. Favicon + manifest — usar `pioneira-icon-512.png` e `pioneira-icon-transparent.png`
+5. ~~Favicon link tags~~ ✅ feito — `<link rel="icon">` + `<link rel="apple-touch-icon">` no `<head>` apontando para `pioneira-icon-512.png` e `pioneira-icon-transparent.png`. Web app manifest (`site.webmanifest`) ainda não criado.
 6. Google Analytics 4 ou Plausible (privacidade-friendly) se cliente quiser métricas
-7. `og:image` — criar imagem de preview social (1200×630px) para WhatsApp/Instagram
+7. `og:image` — ⚠️ meta tags já adicionadas (comentadas) — **criar `assets/og-image.jpg` em 1200×630px** (logo + foto loja + tagline) e descomentar as 3 linhas `og:image` no `<head>`. Sem essa imagem, links no WhatsApp/Instagram ficam sem preview visual.
+8. ~~Webp para `assets/img1.jpg` e `assets/im2.jpeg`~~ ✅ feito — `assets/img1.webp` (83KB) e `assets/im2.webp` (59KB) gerados. Ambos os `<img>` envolvidos em `<picture>` com `<source type="image/webp">`.
 
 ---
 
@@ -436,6 +437,33 @@ Differentiation: [what makes this unique]
 Task: [specific ask]
 Avoid: [anti-patterns to dodge]
 ```
+
+---
+
+## Nav mobile — hamburger drawer
+
+Adicionado em 2026-05-14. Visível apenas em ≤820px. Implementado com `<details>/<summary>` — zero dependência JS extra (3 linhas adicionadas ao script existente para fechar o drawer ao clicar num link).
+
+**HTML:** `<details class="nav-mobile">` com `<summary class="nav-burger">` + `<nav class="nav-drawer">`. Inserido entre `.nav-links` e `.nav-cta` no `<header>`.
+
+**CSS:**
+- `.nav-mobile` — `display: none` por padrão, `display: block` em ≤820px
+- `.nav-burger` — `<summary>` sem marcador nativo, padding + border-radius, hover tinted
+- `.nav-drawer` — dropdown `position: absolute; right: 0`, `var(--shadow-lg)`, `var(--radius-md)`, `z-index: 200`
+
+**JS (no `<script>`):** `.nav-drawer a` forEach → on click → `closest('details').removeAttribute('open')`. Fecha o dropdown ao navegar para âncora.
+
+**Links espelhados:** mesmo conjunto de 6 links do `.nav-links` desktop. Manter em sincronia se nav links mudarem.
+
+---
+
+## Hero image — CLS fix
+
+`assets/img1.jpg`: natural 666×960px. `<img>` agora tem `width="666" height="960"` para o browser reservar espaço antes de carregar — elimina layout shift (CLS).
+
+`assets/im2.jpeg` (seção `#nossa-historia`): natural 853×1280px. Mesma correção: `width="853" height="1280"`.
+
+CSS controla o tamanho visual real via `.hero-photo { width: 100%; height: auto; }` — os atributos HTML apenas preservam aspect ratio no slot.
 
 ---
 
