@@ -116,6 +116,7 @@ CEP:         58800-100
 Referência:  Em frente à Academia Kfitness
 WhatsApp:    (83) 99929-9005   →   wa.me/5583999299005
 Instagram:   @pioneiralavanderiapb
+Site:        https://pioneiralavanderia.com.br  ✅ ativo
 
 Preço:       R$ 15,90 por ciclo (lavar OU secar)
 Combo:       Lavar + Secar = R$ 31,80
@@ -124,6 +125,9 @@ Capacidade:  Até 10kg por ciclo
 Inclusos:    OMO, Comfort e Alvejante
 Pagamento:   PIX, cartão crédito/débito, dinheiro
 Diferencial: 1ª lavanderia de autosserviço de Sousa-PB
+
+Horário:     Acesso livre 6h–22h todos os dias
+             Após 22h: acesso 24h via app Cicclo (QR Code na porta de entrada)
 ```
 
 **Mensagem pré-preenchida do WhatsApp** (codificada em URL):
@@ -262,6 +266,8 @@ gh repo create pioneira-lavanderia --public --source=. --push
 
 **Opção 3 — Domínio próprio:** registrar em registro.br (`.com.br`) e apontar CNAME pro GitHub Pages ou Netlify.
 
+**Domínio ativo:** `pioneiralavanderia.com.br` — `canonical` e `og:url` já apontam para ele.
+
 ---
 
 ## Dados do Cicclo App
@@ -275,6 +281,18 @@ Google Play: https://play.google.com/store/apps/details?id=com.begin.laundway&pl
 ```
 
 O card tem logo real, 4 feature pills e botões de download (App Store + Google Play) com SVG inline.
+
+### Identidade visual do Cicclo
+
+| Token | Valor | Uso no card |
+|---|---|---|
+| `--cicclo-purple` | `#6B4E7D` | texto dos pills, SVG icons |
+| `--cicclo-purple-light` | `#EDE5F3` | fundo do card (gradiente) |
+| `--cicclo-cream` | `#F5EDE8` | cor de texto sobre fundo roxo |
+
+Fundo do card: `linear-gradient(135deg, --cicclo-purple-light → --cicclo-cream 50%)`.
+Botões de download mantêm estilo Pioneira (`--ink` + hover `--teal-deep`) — não usar roxo neles.
+Hover do card usa `#573f65` (purple escuro — não tem token, hardcoded no hover do `.cicclo-dl-btn`).
 
 ---
 
@@ -296,9 +314,10 @@ Se horários mudarem, buscar `.dr-card` no HTML e editar os `<p>` dentro dos `.d
 1. ~~Trocar logo CSS pelo PNG/SVG real~~ ✅ feito
 2. Adicionar fotos da loja (fachada + interior + máquinas)
 3. Adicionar seção de depoimentos (quando tiver social proof real)
-4. Schema.org LocalBusiness markup para SEO local de Sousa-PB
+4. ~~Schema.org LocalBusiness markup para SEO local de Sousa-PB~~ ✅ feito — JSON-LD `LaundryOrDryCleaningService` no `<head>`, com URL, horários e telefone
 5. Favicon + manifest — usar `pioneira-icon-512.png` e `pioneira-icon-transparent.png`
 6. Google Analytics 4 ou Plausible (privacidade-friendly) se cliente quiser métricas
+7. `og:image` — criar imagem de preview social (1200×630px) para WhatsApp/Instagram
 
 ---
 

@@ -6,13 +6,52 @@
   <meta name="description" content="Pioneira — A 1ª lavanderia de autosserviço de Sousa-PB. Tudo pronto em 75 minutos por apenas R$ 15,90 por ciclo. OMO, Comfort e Alvejante inclusos." />
   <meta name="theme-color" content="#1A5F6E" />
 
+  <link rel="canonical" href="https://pioneiralavanderia.com.br" />
+
   <!-- Open Graph -->
   <meta property="og:title" content="Pioneira — A 1ª lavanderia de autosserviço de Sousa-PB" />
   <meta property="og:description" content="Tudo pronto em 75 minutos. R$ 15,90 por ciclo. OMO, Comfort e Alvejante inclusos." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pioneiralavanderia.com.br" />
   <meta property="og:locale" content="pt_BR" />
 
   <title>Pioneira — Lavanderia de Autosserviço em Sousa-PB</title>
+
+  <!-- Structured Data: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LaundryOrDryCleaningService",
+    "name": "Pioneira — Lavanderia de Autosserviço",
+    "description": "A 1ª lavanderia de autosserviço de Sousa-PB. Lave e seque suas roupas em até 75 minutos por R$ 15,90 por ciclo. OMO, Comfort e Alvejante inclusos. Acesso livre das 6h às 22h; acesso 24h pelo app Cicclo.",
+    "url": "https://pioneiralavanderia.com.br",
+    "telephone": "+558399929005",
+    "openingHours": "Mo-Su 06:00-22:00",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Nestor José Sarmento, Loja 3",
+      "addressLocality": "Sousa",
+      "addressRegion": "PB",
+      "postalCode": "58800-100",
+      "addressCountry": "BR"
+    },
+    "priceRange": "R$",
+    "currenciesAccepted": "BRL",
+    "paymentAccepted": "Cash, Credit Card, Debit Card, PIX",
+    "areaServed": {
+      "@type": "City",
+      "name": "Sousa",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "PB",
+        "addressCountry": "BR"
+      }
+    },
+    "sameAs": [
+      "https://www.instagram.com/pioneiralavanderiapb/"
+    ]
+  }
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,6 +77,10 @@
       --line:        rgba(15, 42, 48, 0.08);
 
       --brand-gradient: linear-gradient(95deg, #1A5F6E 0%, #2D8B96 35%, #4FB8B5 70%, #7DD3D0 100%);
+
+      --cicclo-purple:  #6B4E7D;
+      --cicclo-purple-light: #EDE5F3;
+      --cicclo-cream:   #F5EDE8;
 
       --font-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif;
       --font-body:    'Plus Jakarta Sans', system-ui, sans-serif;
@@ -536,6 +579,8 @@
       font-family: var(--font-display); font-size: 16px; font-weight: 700;
       color: var(--ink); display: block; margin-bottom: 16px;
     }
+    .dr-desc { font-size: 14.5px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 20px; }
+    .dr-hours-label { font-size: 11px; font-weight: 700; color: var(--teal-deep); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 10px; }
     .dr-schedule { display: flex; gap: 40px; flex-wrap: wrap; }
     .dr-slot h5 {
       font-size: 12px; font-weight: 700; color: var(--teal-deep);
@@ -556,8 +601,8 @@
     /* CICCLO APP CARD */
     .cicclo-card {
       max-width: 880px; margin: 56px auto 0;
-      background: linear-gradient(135deg, var(--teal-soft) 0%, rgba(197, 234, 232, 0.35) 100%);
-      border: 1px solid rgba(45, 139, 150, 0.22);
+      background: linear-gradient(135deg, var(--cicclo-purple-light) 0%, rgba(245, 237, 232, 0.5) 100%);
+      border: 1px solid rgba(107, 78, 125, 0.2);
       border-radius: var(--radius-lg);
       padding: 28px 36px;
       display: flex; align-items: center; gap: 24px;
@@ -575,11 +620,11 @@
     .cicclo-features { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
     .cicclo-feat {
       display: inline-flex; align-items: center; gap: 7px;
-      font-size: 13px; font-weight: 600; color: var(--teal-deep);
+      font-size: 13px; font-weight: 600; color: var(--cicclo-purple);
       background: white; border-radius: 999px; padding: 6px 14px;
-      border: 1px solid rgba(45, 139, 150, 0.18);
+      border: 1px solid rgba(107, 78, 125, 0.2);
     }
-    .cicclo-feat svg { color: var(--teal-bright); }
+    .cicclo-feat svg { color: var(--cicclo-purple); }
     .cicclo-downloads { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
     .cicclo-dl-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 9px;
@@ -597,6 +642,106 @@
       .cicclo-card { flex-direction: column; padding: 24px 20px; text-align: center; }
       .cicclo-features { justify-content: center; }
       .cicclo-downloads { justify-content: center; }
+    }
+
+    /* RESTRICTIONS NOTE */
+    .restrictions-note {
+      max-width: 880px; margin: 32px auto 0;
+      background: var(--paper);
+      border: 1px solid rgba(90, 107, 112, 0.2);
+      border-radius: var(--radius-md);
+      padding: 24px 32px;
+      display: flex; align-items: flex-start; gap: 20px;
+    }
+    .restrictions-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(90, 107, 112, 0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gray);
+    }
+    .restrictions-body strong {
+      font-family: var(--font-display); font-size: 14px; font-weight: 700;
+      color: var(--ink-soft); display: block; margin-bottom: 10px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .restrictions-list {
+      margin: 0; padding: 0 0 0 18px;
+      display: flex; flex-wrap: wrap; gap: 4px 32px;
+    }
+    .restrictions-list li { font-size: 14px; color: var(--gray); line-height: 1.7; }
+    @media (max-width: 640px) {
+      .restrictions-note { flex-direction: column; padding: 20px; gap: 14px; }
+      .restrictions-list { flex-direction: column; gap: 2px; }
+    }
+
+    /* BRAND STORY */
+    .brand-story { background: var(--paper); }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 72px;
+      align-items: start;
+    }
+    .story-photo-col { position: sticky; top: 100px; }
+    .story-figure { margin: 0; }
+    .story-figure img {
+      width: 100%; border-radius: var(--radius-lg);
+      display: block; object-fit: cover;
+      box-shadow: var(--shadow-md);
+    }
+    .story-figure figcaption {
+      font-size: 13px; color: var(--gray); margin-top: 10px;
+      text-align: center; line-height: 1.5;
+    }
+    @media (max-width: 900px) {
+      .story-grid { grid-template-columns: 1fr; gap: 40px; }
+      .story-photo-col { position: static; order: -1; }
+      .story-figure img { max-height: 420px; object-position: top; }
+    }
+    .story-lead {
+      font-size: clamp(18px, 2vw, 21px); color: var(--ink-soft);
+      line-height: 1.6; font-weight: 500; margin-bottom: 36px;
+    }
+    .story-quote {
+      border-left: 3px solid var(--teal-bright);
+      padding: 8px 0 8px 28px; margin: 0 0 36px;
+      font-family: var(--font-display); font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 600; color: var(--teal-deep); line-height: 1.5;
+      font-style: normal;
+    }
+    .story-text { margin-bottom: 32px; }
+    .story-text p {
+      font-size: 16.5px; color: var(--ink-soft); line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .story-text p:last-child { margin-bottom: 0; }
+    .story-insight {
+      display: flex; gap: 24px; align-items: flex-start;
+      background: white; border: 1px solid rgba(45, 139, 150, 0.18);
+      border-radius: var(--radius-md); padding: 28px 32px;
+      margin-bottom: 32px;
+    }
+    .insight-marker {
+      width: 4px; flex-shrink: 0; border-radius: 4px;
+      background: var(--brand-gradient); align-self: stretch;
+      min-height: 60px;
+    }
+    .insight-label {
+      font-size: 11px; font-weight: 700; color: var(--teal-mid);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      display: block; margin-bottom: 8px;
+    }
+    .insight-body p {
+      font-size: 16px; color: var(--ink); line-height: 1.75; margin: 0;
+    }
+    .insight-body em { font-style: italic; color: var(--teal-deep); font-weight: 500; }
+    .story-closing {
+      font-size: 15.5px; color: var(--gray); line-height: 1.8;
+      padding-top: 24px; border-top: 1px solid rgba(90, 107, 112, 0.15);
+    }
+    @media (max-width: 640px) {
+      .story-insight { padding: 20px; gap: 16px; }
+      .insight-marker { min-height: 40px; }
     }
 
     /* SCROLL REVEAL */
@@ -644,6 +789,7 @@
         <a href="#como-funciona">Como funciona</a>
         <a href="#precos">Preços</a>
         <a href="#por-que">Por que nós</a>
+        <a href="#nossa-historia">Nossa história</a>
         <a href="#local">Onde estamos</a>
       </nav>
       <a href="https://wa.me/5583999299005?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Pioneira%20e%20queria%20tirar%20uma%20d%C3%BAvida." class="nav-cta" target="_blank" rel="noopener">
@@ -757,7 +903,7 @@
         <div class="step reveal">
           <div class="step-num">02</div>
           <h3>Pague e escolha o ciclo</h3>
-          <p>No painel de pagamento — ou pelo app Cicclo via QR Code — selecione a máquina, escolha o ciclo Leve, Normal ou Pesada e pague com PIX, cartão ou dinheiro. A máquina avisa com um bip quando estiver liberada: só apertar INICIAR.</p>
+          <p>No totem de pagamento — ou pelo app Cicclo via QR Code — selecione a máquina, escolha o ciclo Leve, Normal ou Pesada e pague com PIX, débito ou crédito. A máquina avisa com um bip quando estiver liberada: só apertar INICIAR.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">03</div>
@@ -807,6 +953,22 @@
               </span>
             </a>
           </div>
+        </div>
+      </div>
+
+      <div class="restrictions-note reveal">
+        <div class="restrictions-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="restrictions-body">
+          <strong>Itens que não aceitamos para lavagem</strong>
+          <ul class="restrictions-list">
+            <li>Tênis e calçados em geral</li>
+            <li>Roupas hospitalares</li>
+            <li>Roupinhas de pet</li>
+            <li>Pano de chão</li>
+            <li>Roupas com óleo, graxa, querosene ou outros produtos inflamáveis</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -878,7 +1040,9 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <div class="dr-body">
-          <strong>Horários — Serviço Deixe e Retire</strong>
+          <strong>Deixe e Retire — sem esperar o ciclo</strong>
+          <p class="dr-desc">Deixe suas roupas com a gente e nossa equipe cuida de tudo: lavagem, secagem, dobra e organização. Retire na loja ou mande um mototáxi/Uber buscar. Roupas limpas, dobradas e prontas pra guardar — sem custo adicional.</p>
+          <span class="dr-hours-label">Atendimento presencial</span>
           <div class="dr-schedule">
             <div class="dr-slot">
               <h5>Seg à Sex</h5>
@@ -924,7 +1088,7 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
           <h3>Produtos de marca inclusos</h3>
-          <p>OMO, Comfort e Alvejante — o cuidado da sua roupa não é opcional aqui. Já vem dosado certo no preço.</p>
+          <p>OMO, Comfort e Alvejante profissional <strong>sem cloro</strong> — não danifica nem mancha, ajuda a renovar a cor das peças, deixa as brancas ainda mais brancas e tem ação antimicrobiana. Já vem dosado certo no preço.</p>
         </div>
 
         <div class="why-card reveal">
@@ -949,6 +1113,57 @@
           </div>
           <h3>Suporte por WhatsApp</h3>
           <p>Dúvida sobre como usar? Problema com a máquina? Manda mensagem no nosso WhatsApp que a gente resolve rápido.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STORY -->
+  <section id="nossa-historia" class="brand-story">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Nossa história</span>
+        <h2>Do sertão pra cá. De família pra família.</h2>
+      </div>
+
+      <div class="story-grid">
+        <div class="story-content">
+          <p class="story-lead reveal">A Pioneira nasceu de uma história real de trabalho, coragem e recomeços.</p>
+
+          <blockquote class="story-quote reveal">
+            Entre baldes, tanques e muito esforço, nasceu não apenas uma profissão — mas um exemplo de dignidade, força e perseverança.
+          </blockquote>
+
+          <div class="story-text reveal">
+            <p>A inspiração veio de <strong>Dona Rita</strong>, avó de uma das fundadoras — mulher forte que criou toda uma família lavando roupas de ganho em Sousa, no sertão paraibano.</p>
+            <p>Anos depois, sua neta saiu de Sousa aos 20 anos para tentar a vida na capital. Formada em Biomedicina, descobriu nas lavanderias de autosserviço de João Pessoa uma praticidade que ainda não existia em sua cidade.</p>
+          </div>
+
+          <div class="story-insight reveal">
+            <div class="insight-marker"></div>
+            <div class="insight-body">
+              <span class="insight-label">O momento</span>
+              <p>Foi durante uma ligação com Dona Rita, enquanto utilizava uma dessas lavanderias, que surgiu o insight: <em>por que não levar essa inovação para Sousa?</em> Naquele mesmo momento, ligou para o pai, compartilhou a ideia — e ele topou o desafio.</p>
+            </div>
+          </div>
+
+          <div class="story-text reveal">
+            <p>Assim, pai e filha iniciaram juntos o processo de transformar um sonho em realidade. Foi dessa união entre história, empreendedorismo e inovação que nasceu a Pioneira: a primeira lavanderia de autosserviço de Sousa.</p>
+          </div>
+
+          <p class="story-closing reveal">Hoje, unimos tecnologia, praticidade e cuidado para facilitar a rotina das pessoas — sem esquecer de onde tudo começou: do trabalho honesto de uma mulher que sustentou sua família lavando roupas. Mais que uma lavanderia, a Pioneira carrega um legado familiar, propósito e evolução.</p>
+        </div>
+
+        <div class="story-photo-col reveal">
+          <figure class="story-figure">
+            <img
+              src="assets/im2.jpeg"
+              alt="Pai e filha, fundadores da Pioneira, na inauguração da lavanderia em Sousa-PB"
+              loading="lazy"
+              width="420"
+            />
+            <figcaption>Pai e filha — os fundadores da Pioneira na inauguração</figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -1060,6 +1275,7 @@
             <li><a href="#como-funciona">Como funciona</a></li>
             <li><a href="#precos">Preços</a></li>
             <li><a href="#por-que">Por que nós</a></li>
+            <li><a href="#nossa-historia">Nossa história</a></li>
             <li><a href="#local">Onde estamos</a></li>
           </ul>
         </div>
