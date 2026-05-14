@@ -41,9 +41,9 @@ Decisão deliberada: **zero build**, single-file.
 <section.how>       como funciona (3 passos) + .cicclo-card + .restrictions-note
 <section.services>  preço único + 3 combos + .dr-card (Deixe e Retire)
 <section.why>       8 cards de diferenciais (grid 4-col)
-<section#faq>       11 perguntas frequentes em accordion <details>/<summary>
 <section#nossa-historia> história da marca (2 colunas: texto + foto assets/im2.jpeg)
 <section.location>  endereço + Google Maps iframe
+<section#faq>       11 perguntas frequentes em accordion <details>/<summary>
 <section.final-cta> CTA escuro final
 <footer>            navegação + contato + redes sociais
 <a.whats-fab>       botão flutuante de WhatsApp
@@ -346,6 +346,53 @@ Sáb e Dom:  Apenas Autosserviço (sem atendimento para Deixe e Retire)
 ```
 
 Se horários mudarem, buscar `.dr-card` no HTML e editar os `<p>` dentro dos `.dr-slot`.
+
+---
+
+## Seção `#por-que` — Why-Grid
+
+Grid `4-col` no desktop, `2-col` ≤1100px, `1-col` ≤600px. **8 cards** atualmente:
+
+| Card | Status |
+|---|---|
+| A 1ª de Sousa-PB | original |
+| Tudo pronto em 75 min | original |
+| Produtos de marca inclusos | atualizado — copy reescrita + `.why-badge` "Finalizador exclusivo disponível" |
+| Mais barato que ter máquina | original |
+| Paga como quiser | original |
+| Atendimento presente | atualizado — agora inclui horários presenciais (seg–sex 9h30–14h / 16h–19h30) + WhatsApp |
+| Ambiente que acolhe | **novo** — climatizado, poltronas, Wi-Fi, tomadas, café, água, massageador de pés |
+| Máquinas de alta performance | **novo** — importadas, aço inox, até 1200 RPM |
+
+`.why-badge` — pill teal-soft inline. Usar para destaques curtos dentro de cards sem criar card novo.
+
+---
+
+## Seção `#faq` — Perguntas Frequentes
+
+Accordion puro HTML/CSS via `<details>/<summary>`. Zero JS. Acessível nativamente.
+
+**11 perguntas** (em ordem):
+1. Preciso levar sabão e amaciante?
+2. Vocês passam as roupas?
+3. Quantas peças cabem na máquina?
+4. Posso lavar edredons, cortinas e redes?
+5. A Pioneira abre em feriados?
+6. Preciso agendar horário?
+7. Posso acompanhar as máquinas pelo celular?
+8. Quais formas de pagamento vocês aceitam?
+9. Existe alguém para ajudar no local?
+10. As roupas de clientes diferentes se misturam?
+11. Vocês possuem serviço de "Deixe & Retire"?
+
+**CSS relevante:**
+- `details.faq-item` — border + radius + hover shadow
+- `details.faq-item summary::after` — chevron SVG inline como `background-image`, rotaciona 180° no `[open]`
+- `.faq-body` — padding 0 28px 22px, `p + p { margin-top: 10px }`
+
+Para adicionar pergunta: novo `<details class="faq-item reveal">` dentro de `.faq-list`. Para reordenar: mover o bloco `<details>` inteiro.
+
+Seção posicionada entre `#por-que` e `#nossa-historia`. Linkada em nav e footer.
 
 ---
 
